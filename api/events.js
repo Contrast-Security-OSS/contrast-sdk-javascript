@@ -1,20 +1,20 @@
 function getLatestEvents(orgUuid, limit){
-    path = `${orgUuid}/events`;
+    var path = `${orgUuid}/events`;
     return this._get(path, params={'limit':limit});
 }
 
 function getLatestApplicationCreation(orgUuid, limit){
-    path = `${orgUuid}/events/application`;
+    var path = `${orgUuid}/events/application`;
     return this._get(path, params={'limit':limit});
 }
 
 function getLatestServerCreation(orgUuid, limit){
-    path = `${orgUuid}/events/server`;
+    var path = `${orgUuid}/events/server`;
     return this._get(path, params={'limit': limit});
 }
 
 function getLatestTracesReceived(orgUuid, limit){
-    path = `${orgUuid}/events/trace`;
+    var path = `${orgUuid}/events/trace`;
     return this._get(path, params={'limit': limit});
 }
 

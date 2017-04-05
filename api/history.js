@@ -9,7 +9,5 @@ function getOrganizationScoreHistoryInterval(orgUuid, interval, includeDefense){
     return this._get(path, params={'interval':interval});
 }
 
-
-
 module.exports.getOrganizationScoreHistory = getOrganizationScoreHistory;
 module.exports.getOrganizationScoreHistoryInterval = getOrganizationScoreHistoryInterval;
