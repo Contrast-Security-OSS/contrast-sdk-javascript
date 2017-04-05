@@ -1,4 +1,5 @@
 var ProfileApi = require('./api/profile');
+var OrganizationApi = require('./api/organization');
 var rp = require('request-promise');
 
 function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
@@ -8,7 +9,7 @@ function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
     this.teamserverUrl = teamserverUrl || 'https://app.contrastsecurity.com'
     this.headers = createHeaders(username, serviceKey, apiKey);
     this.version = '/ng/';
-    configureApi(this);
+    configureAllApis(this);
 }
 
 function createHeaders(username, serviceKey, apiKey){
@@ -22,18 +23,16 @@ function createHeaders(username, serviceKey, apiKey){
             };
 }
 
-function configureApi(instance){
-    configureProfileApi(instance);
+function configureAllApis(instance){
+    configureGenericApi(ProfileApi, instance);
+    configureGenericApi(OrganizationApi, instance);
 }
 
-function configureProfileApi(instance){
-    instance.getProfileInfo = ProfileApi.getProfileInfo;
-    instance.getProfileOrganizations = ProfileApi.getProfileOrganizations;
-    instance.getProfileDefaultOrganization = ProfileApi.getProfileDefaultOrganization;
-    instance.getOrgInfo = ProfileApi.getOrgInfo;
-    instance.getProfilePasswordPolicy = ProfileApi.getProfilePasswordPolicy;
-    instance.getProfileRoles = ProfileApi.getProfileRoles;
-    instance.setProfileDefaultOrg = ProfileApi.setProfileDefaultOrg;
+function configureGenericApi(api, instance){
+    var methods = Object.keys(api);
+    for (var i = 0; i < methods.length; i++){
+        instance[methods[i]] = api[methods[i]];
+    }
 }
 
 function _get(path, params){
