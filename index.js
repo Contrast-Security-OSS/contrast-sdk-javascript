@@ -1,7 +1,6 @@
 var ProfileApi = require('./api/profile');
 var request = require('request');
 var rp = require('request-promise');
-var ApiSupport = require('./api/apiSupport');
 
 function ContrastSdk(username, apiKey, serviceKey, teamserverUrl='https://app.contrastsecurity.com'){
     this.username = username;
