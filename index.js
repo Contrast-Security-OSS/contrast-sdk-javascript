@@ -25,7 +25,17 @@ function createHeaders(username, serviceKey, apiKey){
 }
 
 function configureApi(instance){
-    instance.getProfileInfo = ProfileApi.getProfileInfo
+    configureProfileApi(instance);
+}
+
+function configureProfileApi(instance){
+    instance.getProfileInfo = ProfileApi.getProfileInfo;
+    instance.getProfileOrganizations = ProfileApi.getProfileOrganizations;
+    instance.getProfileDefaultOrganization = ProfileApi.getProfileDefaultOrganization;
+    instance.getOrgInfo = ProfileApi.getOrgInfo;
+    instance.getProfilePasswordPolicy = ProfileApi.getProfilePasswordPolicy;
+    instance.getProfileRoles = ProfileApi.getProfileRoles;
+    instance.setProfileDefaultOrg = ProfileApi.setProfileDefaultOrg;
 }
 
 function _get(path, params){
@@ -44,7 +54,7 @@ function _put(path, data){
     var options = {
         method: 'PUT',
         uri: url,
-        body: data, 
+        body: data,
         headers: this.headers,
         json: true
     };
@@ -52,5 +62,6 @@ function _put(path, data){
 }
 
 ContrastSdk.prototype._get = _get
+ContrastSdk.prototype._put = _put
 
 module.exports = ContrastSdk;
