@@ -4,13 +4,14 @@ var HistoryApi = require('./api/history');
 var EventsApi = require('./api/events');
 var LibraryApi = require('./api/library');
 var ModuleApi = require('./api/modules');
+var AlertApi = require('./api/alerts');
 var rp = require('request-promise');
 
 function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
     this.username = username;
     this.apiKey = apiKey;
     this.serviceKey = serviceKey;
-    this.teamserverUrl = teamserverUrl || 'https://app.contrastsecurity.com'
+    this.teamserverUrl = teamserverUrl || 'https://app.contrastsecurity.com';
     this.headers = createHeaders(username, serviceKey, apiKey);
     this.version = '/ng/';
     configureAllApis(this);
@@ -34,6 +35,7 @@ function configureAllApis(instance){
     configureGenericApi(EventsApi, instance);
     configureGenericApi(LibraryApi, instance);
     configureGenericApi(ModuleApi, instance);
+    configureGenericApi(AlertApi, instance);
 }
 
 function configureGenericApi(api, instance){

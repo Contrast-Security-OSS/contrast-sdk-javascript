@@ -18,7 +18,7 @@ function getLatestTracesReceived(orgUuid, limit){
     return this._get(path, params={'limit': limit});
 }
 
-module.exports.getLatestEvents = getLatestEvents
-module.exports.getLatestApplicationCreation = getLatestApplicationCreation
-module.exports.getLatestServerCreation = getLatestServerCreation
-module.exports.getLatestTracesReceived = getLatestTracesReceived
+module.exports.getLatestEvents = getLatestEvents;
+module.exports.getLatestApplicationCreation = getLatestApplicationCreation;
+module.exports.getLatestServerCreation = getLatestServerCreation;
+module.exports.getLatestTracesReceived = getLatestTracesReceived;
