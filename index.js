@@ -1,5 +1,6 @@
 var ProfileApi = require('./api/profile');
 var OrganizationApi = require('./api/organization');
+var HistoryApi = require('./api/history');
 var rp = require('request-promise');
 
 function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
@@ -26,6 +27,7 @@ function createHeaders(username, serviceKey, apiKey){
 function configureAllApis(instance){
     configureGenericApi(ProfileApi, instance);
     configureGenericApi(OrganizationApi, instance);
+    configureGenericApi(HistoryApi, instance);
 }
 
 function configureGenericApi(api, instance){
