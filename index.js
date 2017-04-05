@@ -70,6 +70,20 @@ function _put(path, data){
     return rp(options);
 }
 
+
+function _delete(path, data){
+    url = this.teamserverUrl + this.version + path
+    var options = {
+        method: 'DELETE',
+        uri: url,
+        body: data,
+        headers: this.headers,
+        json: true
+    };
+    return rp(options);
+}
+
+
 ContrastSdk.prototype._get = _get
 ContrastSdk.prototype._put = _put
 
