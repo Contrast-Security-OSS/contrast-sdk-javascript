@@ -1,12 +1,11 @@
 var ProfileApi = require('./api/profile');
-var request = require('request');
 var rp = require('request-promise');
 
-function ContrastSdk(username, apiKey, serviceKey, teamserverUrl='https://app.contrastsecurity.com'){
+function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
     this.username = username;
     this.apiKey = apiKey;
     this.serviceKey = serviceKey;
-    this.teamserverUrl = teamserverUrl;
+    this.teamserverUrl = teamserverUrl || 'https://app.contrastsecurity.com'
     this.headers = createHeaders(username, serviceKey, apiKey);
     this.version = '/ng/';
     configureApi(this);
