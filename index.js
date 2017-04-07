@@ -7,6 +7,10 @@ var ModuleApi = require('./api/modules');
 var AlertApi = require('./api/alerts');
 var RoleApi = require('./api/role');
 var ServerApi = require('./api/server');
+var UserApi = require('./api/user');
+var WebhookApi = require('./api/webhook');
+var ScoreApi = require('./api/scores');
+var RulesApi = require('./api/rules');
 var rp = require('request-promise');
 
 function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
@@ -40,6 +44,10 @@ function configureAllApis(instance){
     configureGenericApi(AlertApi, instance);
     configureGenericApi(RoleApi, instance);
     configureGenericApi(ServerApi, instance);
+    configureGenericApi(UserApi, instance);
+    configureGenericApi(WebhookApi, instance);
+    configureGenericApi(ScoreApi, instance);
+    configureGenericApi(RulesApi, instance);
 }
 
 function configureGenericApi(api, instance){
