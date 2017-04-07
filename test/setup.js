@@ -5,5 +5,5 @@ module.exports.sdk = new ContrastSdk(config.username, config.apiKey, config.serv
 module.exports.org = config.orgUuid;
 module.exports.server = config.serverId;
 module.exports.app = config.appId;
-module.exports.trace = config.trace;
+module.exports.trace = config.traceId;
 module.exports.library = config.javaLibraryHash;

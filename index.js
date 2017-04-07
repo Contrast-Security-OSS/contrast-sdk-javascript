@@ -6,6 +6,7 @@ var LibraryApi = require('./api/library');
 var ModuleApi = require('./api/modules');
 var AlertApi = require('./api/alerts');
 var RoleApi = require('./api/role');
+var ServerApi = require('./api/server');
 var rp = require('request-promise');
 
 function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
@@ -38,6 +39,7 @@ function configureAllApis(instance){
     configureGenericApi(ModuleApi, instance);
     configureGenericApi(AlertApi, instance);
     configureGenericApi(RoleApi, instance);
+    configureGenericApi(ServerApi, instance);
 }
 
 function configureGenericApi(api, instance){
@@ -69,6 +71,20 @@ function _put(path, data){
     };
     return rp(options);
 }
+
+
+function _delete(path, data){
+    url = this.teamserverUrl + this.version + path
+    var options = {
+        method: 'DELETE',
+        uri: url,
+        body: data,
+        headers: this.headers,
+        json: true
+    };
+    return rp(options);
+}
+
 
 ContrastSdk.prototype._get = _get
 ContrastSdk.prototype._put = _put
