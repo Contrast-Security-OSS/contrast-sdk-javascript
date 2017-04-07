@@ -13,6 +13,7 @@ var ScoreApi = require('./api/scores');
 var RulesApi = require('./api/rules');
 var TraceApi = require('./api/trace');
 var TagsApi = require('./api/tags');
+var ApplicationApi = require('./api/application');
 var rp = require('request-promise');
 
 function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
@@ -52,6 +53,7 @@ function configureAllApis(instance){
     configureGenericApi(RulesApi, instance);
     configureGenericApi(TraceApi, instance);
     configureGenericApi(TagsApi, instance);
+    configureGenericApi(ApplicationApi, instance);
 }
 
 function configureGenericApi(api, instance){
