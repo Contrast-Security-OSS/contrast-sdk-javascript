@@ -10,11 +10,11 @@ function getActiveServers(orgUuid){
 
 function filterServers(orgUuid, filter){
     var path = `${orgUuid}/servers/filter`;
-    returh this._get(path, params=filter);
+    return this._get(path, params=filter);
 }
 
 function getServerFilters(orgUuid){
-    var path = `${orgUuid/servers/filters/listing}`;
+    var path = `${orgUuid}/servers/filters/listing`;
     return this._get(path);
 }
 
@@ -23,8 +23,8 @@ function getServerFilterSubfilters(orgUuid, filterType){
     return this._get(path);
 }
 
-function getServerModes(){
-    var path = `${orgUuid}/servers/filters/${filterType}/listing`;
+function getServerModes(orgUuid){
+    var path = `${orgUuid}/servers/modes`;
     return this._get(path);
 }
 
@@ -33,7 +33,7 @@ function getServerDetails(orgUuid, serverId, expand){
     return this._get(path, params={'expand':expand});
 }
 
-function getServerActivity(orgUUid, serverId, startDate, endDate){
+function getServerActivity(orgUuid, serverId, startDate, endDate){
     var path = `${orgUuid}/servers/${serverId}/activity`;
     return this._get(path, params={'startDate':startDate, 'endDate':endDate});
 }
@@ -48,7 +48,7 @@ function getServerAppTraces(orgUuid, serverId, orphans){
     return this._get(path, params={'orphans': orphans});
 }
 
-function getServerAttackStatus(orgUuidm serverId, includeMerged){
+function getServerAttackStatus(orgUuid, serverId, includeMerged){
     var path = `${orgUuid}/servers/${serverId}/breakdown/attack/status`;
     return this._get(path, params={'includeMerged':includeMerged});
 }
@@ -59,17 +59,18 @@ function getServerAttackTypes(orgUuid, serverId, includeMerged){
 }
 
 function getServerTraceBreakdown(orgUuid, serverId, includeMerged){
-    var path = `${orgUuid}/server/${serverId}/breakdown/trace/rule`;
+    var path = `${orgUuid}/servers/${serverId}/breakdown/trace/rule`;
     return this._get(path, params={'includeMerged':includeMerged});
+
 }
 
 function getServerTraceSeverityBreakdown(orgUuid, serverId, includeMerged){
-    var path = `${orgUuid}/server/${serverId}/breakdown/trace/severity`;
+    var path = `${orgUuid}/servers/${serverId}/breakdown/trace/severity`;
     return this._get(path, params={'includeMerged':includeMerged});
 }
 
 function getServerTraceStatusBreakdown(orgUuid, serverId, includeMerged){
-    var path = `${orgUuid}/server/${serverId}/breakdown/trace/status`;
+    var path = `${orgUuid}/servers/${serverId}/breakdown/trace/status`;
     return this._get(path, params={'includeMerged':includeMerged});
 }
 
@@ -80,7 +81,7 @@ function getServerLibrariesBreakdown(orgUuid, serverId, includeMerged, includeAr
 
 function updateServerName(orgUuid, serverId, newName){
     var path = `${orgUuid}/servers/${serverId}/name`;
-    return this._get(path, data={'name': newName});
+    return this._put(path, data={'name': newName});
 }
 
 function getServerProperties(orgUuid,serverId){
@@ -88,9 +89,9 @@ function getServerProperties(orgUuid,serverId){
     return this._get(path);
 }
 
-function getServerVulnAndAttackUrls(orgUUid, serverId, interval){
+function getServerVulnAndAttackUrls(orgUuid, serverId, interval){
     var path = `${orgUuid}/servers/${serverId}/url`;
-    return this._get(path, params={'interval': interavl});
+    return this._get(path, params={'interval': interval});
 }
 
 function getServerVulnUrls(orgUuid, serverId, interval){
@@ -109,7 +110,7 @@ function getServerLibraries(orgUuid, serverId, expand, quickFilter){
 }
 
 function getServerLibrariesSubfilters(orgUuid, serverId, filterType){
-    var path = `${orgUuid}/servers/${serverId}/libraries/filters{$filterType}/listing`;
+    var path = `${orgUuid}/servers/${serverId}/libraries/filters/${filterType}/listing`;
     return this._get(path);
 }
 
@@ -119,7 +120,7 @@ function getServerLibrariesStats(orgUuid, serverId, includeMerged){
 }
 
 function filterServerLibraries(orgUuid, serverId, filter){
-    var path = `${orgUUid}/servers/${serverId}/libraries/filter`;
+    var path = `${orgUuid}/servers/${serverId}/libraries/filter`;
     return this._get(path, params=filter);
 }
 
@@ -131,21 +132,22 @@ function getServerTraceSubfilters(orgUUid, serverId, traceFilterType){
 function getServerTraceDetails(orgUuid, serverId, traceUuid, expand){
     var path = `${orgUuid}/servertraces/${serverId}/filter/${traceUuid}`;
     return this._get(path, params={'expand': expand});
+
 }
 
 function filterServerTraces(orgUuid, serverId, filter){
-    var path = `${orgUUid}/servertraces/${serverId}/filter`;
+    var path = `${orgUuid}/servertraces/${serverId}/filter`;
     return this._get(path, params=filter);
 }
 
-function deleteServerTraces(orgUUid, serverId, traces){
+function deleteServerTraces(orgUuid, serverId, traces){
     var path = `${orgUuid}/servertraces/${serverId}`;
     return this._delete(path, data={'traces': traces});
 }
 
-function getServerVulnerabilityUuids(orgUuid, serverId, serverTrace, filter){
+function getServerVulnerabilityUuids(orgUuid, serverId, filter){
     var path = `${orgUuid}/servertraces/${serverId}/ids`;
-    return this._get(path, params={filter});
+    return this._get(path, filter);
 }
 
 function getServerPolicyViolations(orgUuid, serverId){
@@ -153,7 +155,7 @@ function getServerPolicyViolations(orgUuid, serverId){
     return this._get(path);
 }
 
-function deleteServerTrace(orgUUid, serverId, traceUuid){
+function deleteServerTrace(orgUuid, serverId, traceUuid){
     var path = `${orgUuid}/servertraces/${serverId}/trace/${traceUuid}`;
     return this._delete(path);
 }
