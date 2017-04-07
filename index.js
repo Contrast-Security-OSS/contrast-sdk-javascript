@@ -11,6 +11,7 @@ var UserApi = require('./api/user');
 var WebhookApi = require('./api/webhook');
 var ScoreApi = require('./api/scores');
 var RulesApi = require('./api/rules');
+var TraceApi = require('./api/trace');
 var rp = require('request-promise');
 
 function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
@@ -48,6 +49,7 @@ function configureAllApis(instance){
     configureGenericApi(WebhookApi, instance);
     configureGenericApi(ScoreApi, instance);
     configureGenericApi(RulesApi, instance);
+    configureGenericApi(TraceApi, instance);
 }
 
 function configureGenericApi(api, instance){
@@ -62,6 +64,18 @@ function _get(path, params){
     var options = {
         uri: url,
         qs: params,
+        headers: this.headers,
+        json: true
+    };
+    return rp(options);
+}
+
+function _post(path, data){
+    url = this.teamserverUrl + this.version + path
+    var options = {
+        method: 'POST',
+        uri: url,
+        body: data,
         headers: this.headers,
         json: true
     };
@@ -94,7 +108,9 @@ function _delete(path, data){
 }
 
 
-ContrastSdk.prototype._get = _get
-ContrastSdk.prototype._put = _put
+ContrastSdk.prototype._get = _get;
+ContrastSdk.prototype._post = _post;
+ContrastSdk.prototype._put = _put;
+ContrastSdk.prototype._delete = _delete;
 
 module.exports = ContrastSdk;
