@@ -14,6 +14,7 @@ var RulesApi = require('./api/rules');
 var TraceApi = require('./api/trace');
 var TagsApi = require('./api/tags');
 var ApplicationApi = require('./api/application');
+var AgentApi = require('./api/agent');
 var rp = require('request-promise');
 
 function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
@@ -54,6 +55,7 @@ function configureAllApis(instance){
     configureGenericApi(TraceApi, instance);
     configureGenericApi(TagsApi, instance);
     configureGenericApi(ApplicationApi, instance);
+    configureGenericApi(AgentApi, instance);
 }
 
 function configureGenericApi(api, instance){
@@ -111,10 +113,22 @@ function _delete(path, data){
     return rp(options);
 }
 
+function _download(path, params){
+    url = this.teamserverUrl + this.version + path;
+    var options = {
+        uri: url,
+        qs: params,
+        headers: this.headers,
+        resolveWithFullResponse: true,
+        encoding: null
+    };
+    return rp(options);
+}
 
 ContrastSdk.prototype._get = _get;
 ContrastSdk.prototype._post = _post;
 ContrastSdk.prototype._put = _put;
 ContrastSdk.prototype._delete = _delete;
+ContrastSdk.prototype._download = _download;
 
 module.exports = ContrastSdk;
