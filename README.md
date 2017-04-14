@@ -1,11 +1,11 @@
 ## Install
-The Contrast Api module is available to install via *pip*.
+The Contrast Api module is available to install via *npm*.
 ```commandline
-    npm install contrast-security --save
+    npm install contrast-sdk --save
 ```
 
 ### Sample usage
-The SDK offers a majority of our public APIs through an instance of the ContrastSdk object.
+The SDK offers a majority of our public APIs through an instance of the ContrastSdk.
 Any method of the SDK that interacts with our API returns a promise.
 
 > **Note:** The Contrast URL is optional and defaults to https://app.contrastsecurity.com/Contrast/api
@@ -19,19 +19,21 @@ An example of getting an application:
 ```javascript
     var orgUuid='organization_uuid';
     contrastSdk.getApplication(orgUuid, 'an_app_id').then(function(response){
-
+        console.log(response.application.name);
     });
 ```
 
 In some cases, you may want to filter applications, servers, traces or libraries. Any endpoint that involves filtering can use the appropriate filter object.
 
-These methods are easily identifiable on the ContrastSDK object by looking at any methods that include the phrase `filter`.
+These methods are easily identifiable on the ContrastSdk object by looking at any methods that include the phrase `filter`.
 
 ```javascript
     var filter = {};
     filter.apps = ['appId1', 'appId2'];
     contrastSdk.filterLibraries(orgUuid, filter).then(function(response){
-
+        response.libraries.forEach(function(library){
+            console.log(library.file_name + ' : ' + library.grade);
+        });
     });
 ```
 
