@@ -15,7 +15,8 @@ var TraceApi = require('./api/trace');
 var TagsApi = require('./api/tags');
 var ApplicationApi = require('./api/application');
 var AgentApi = require('./api/agent');
-var rp = require('request-promise');
+
+var ApiSupport = require('./api/support')
 
 function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
     this.username = username;
@@ -61,74 +62,14 @@ function configureAllApis(instance){
 function configureGenericApi(api, instance){
     var methods = Object.keys(api);
     for (var i = 0; i < methods.length; i++){
-        instance[methods[i]] = api[methods[i]];
+        ContrastSdk.prototype[methods[i]] = api[methods[i]];
     }
 }
 
-function _get(path, params){
-    url = this.teamserverUrl + this.version + path
-    var options = {
-        uri: url,
-        qs: params,
-        headers: this.headers,
-        json: true
-    };
-    return rp(options);
-}
-
-function _post(path, data){
-    url = this.teamserverUrl + this.version + path
-    var options = {
-        method: 'POST',
-        uri: url,
-        body: data,
-        headers: this.headers,
-        json: true
-    };
-    return rp(options);
-}
-
-function _put(path, data){
-    url = this.teamserverUrl + this.version + path
-    var options = {
-        method: 'PUT',
-        uri: url,
-        body: data,
-        headers: this.headers,
-        json: true
-    };
-    return rp(options);
-}
-
-
-function _delete(path, data){
-    url = this.teamserverUrl + this.version + path
-    var options = {
-        method: 'DELETE',
-        uri: url,
-        body: data,
-        headers: this.headers,
-        json: true
-    };
-    return rp(options);
-}
-
-function _download(path, params){
-    url = this.teamserverUrl + this.version + path;
-    var options = {
-        uri: url,
-        qs: params,
-        headers: this.headers,
-        resolveWithFullResponse: true,
-        encoding: null
-    };
-    return rp(options);
-}
-
-ContrastSdk.prototype._get = _get;
-ContrastSdk.prototype._post = _post;
-ContrastSdk.prototype._put = _put;
-ContrastSdk.prototype._delete = _delete;
-ContrastSdk.prototype._download = _download;
+ContrastSdk.prototype._get = ApiSupport._get;
+ContrastSdk.prototype._post = ApiSupport._post;
+ContrastSdk.prototype._put = ApiSupport._put;
+ContrastSdk.prototype._delete = ApiSupport._delete;
+ContrastSdk.prototype._download = ApiSupport._download;
 
 module.exports = ContrastSdk;

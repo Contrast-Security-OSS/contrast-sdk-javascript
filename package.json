@@ -4,13 +4,17 @@
   "description": "Node module to interact with the Contrast API",
   "main": "index.js",
   "scripts": {
-    "test": "mocha 'test/*Test.js' --timeout 10000"
-
+    "test": "mocha 'test/*Test.js' --timeout 10000",
+    "client": "browserify index.js --s ContrastSdk  > contrast-security.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "request": "^2.81.0",
-    "request-promise": "^4.2.0"
+    "request-promise": "^4.2.0",
+    "xhr-promise": "^2.0.0"
+  },
+  "browser": {
+    "request": "xhr"
   }
 }
