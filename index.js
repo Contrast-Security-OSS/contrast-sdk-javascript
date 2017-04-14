@@ -22,7 +22,7 @@ function ContrastSdk(username, apiKey, serviceKey, teamserverUrl){
     this.username = username;
     this.apiKey = apiKey;
     this.serviceKey = serviceKey;
-    this.teamserverUrl = teamserverUrl || 'https://app.contrastsecurity.com';
+    this.teamserverUrl = teamserverUrl || 'https://app.contrastsecurity.com/Contrast/api';
     this.headers = createHeaders(username, serviceKey, apiKey);
     this.version = '/ng/';
     configureAllApis(this);

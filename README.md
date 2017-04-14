@@ -8,10 +8,10 @@ The Contrast Api module is available to install via *pip*.
 The SDK offers a majority of our public APIs through an instance of the ContrastSdk object.
 Any method of the SDK that interacts with our API returns a promise.
 
-> **Note:** The Contrast URL is optional and defaults to https://app.contrastsecurity.com
+> **Note:** The Contrast URL is optional and defaults to https://app.contrastsecurity.com/Contrast/api
 
 ```javascript
-    var Contrast = require('contrast-security');    
+    var ContrastSdk = require('contrast-security');    
     var contrastSdk = new ContrastSdk('username','api_key','service_key','teamserver_url');
 ```
 
