@@ -13,11 +13,6 @@ function getRecentApplications(orgUuid, expand, includeArchived, includeMerged, 
     return this._get(path, {'expand': expand, 'includeArchived': includeArchived, 'includeMerged': includeMerged, 'limit': limit});
 }
 
-function getApplicationAgentActivity(orgUuid, appId, range, includeMerged){
-    var path = `${orgUuid}/applications/${appId}/agent/activity/${range}`;
-    return this._get(path, {'includeMerged': includeMerged});
-}
-
 function getApplicationComponents(orgUuid, appId){
     var path = `${orgUuid}/applications/${appId}/components`;
     return this._get(path);
@@ -218,7 +213,6 @@ function getApplicationTraceVisibility(orgUuid, appId, traceId){
 module.exports.getInactiveApplications = getInactiveApplications;
 module.exports.getNewestApplications = getNewestApplications;
 module.exports.getRecentApplications = getRecentApplications;
-module.exports.getApplicationAgentActivity = getApplicationAgentActivity;
 module.exports.getApplicationComponents = getApplicationComponents;
 module.exports.getApplicationCoverage = getApplicationCoverage;
 module.exports.getApplicationCoveragePastWeek = getApplicationCoveragePastWeek;

@@ -18,8 +18,9 @@ function getLibraryStats(orgUuid){
     return this._get(path);
 }
 
-function getAllLibraryFilters(filterType){
-    return this._get('libraries/filters/listing', params={'filterType': filterType});
+function getOrgLibraryFilters(orgUuid, filterType){
+    var path = `${orgUuid}/libraries/filters/listing`;
+    return this._get(path, params={'filterType': filterType});
 }
 
 function getLibraryFilterSubfilters(orgUuid, filterType){
@@ -41,7 +42,7 @@ module.exports.getLibraries = getLibraries
 module.exports.getDotnetLibrary = getDotnetLibrary
 module.exports.getJavaLibrary = getJavaLibrary
 module.exports.getLibraryStats = getLibraryStats
-module.exports.getAllLibraryFilters = getAllLibraryFilters
+module.exports.getOrgLibraryFilters = getOrgLibraryFilters
 module.exports.getLibraryFilterSubfilters = getLibraryFilterSubfilters
 module.exports.filterLibraries = filterLibraries
 module.exports.getLibraryPolicy = getLibraryPolicy
