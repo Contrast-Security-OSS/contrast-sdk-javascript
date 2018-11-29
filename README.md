@@ -1,7 +1,7 @@
 ## Install
-ToDo The Contrast Api module is available to install via *npm*.
+The Contrast Api module is available to install via *npm*.
 ```commandline
-    npm install contrast-sdk-javascript --save
+    npm install contrast-sdk --save
 ```
 
 ### Sample usage
