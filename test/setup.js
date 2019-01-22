@@ -8,3 +8,4 @@ module.exports.server = config.serverId;
 module.exports.app = config.appId;
 module.exports.trace = config.traceId;
 module.exports.library = config.javaLibraryHash;
+module.exports.groupId = config.groupId;

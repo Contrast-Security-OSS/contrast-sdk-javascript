@@ -15,6 +15,7 @@ var TraceApi = require('./api/trace');
 var TagsApi = require('./api/tags');
 var ApplicationApi = require('./api/application');
 var AgentApi = require('./api/agent');
+var GroupApi = require('./api/group');
 
 var ApiSupport = require('./api/support')
 
@@ -57,6 +58,7 @@ function configureAllApis(instance){
     configureGenericApi(TagsApi, instance);
     configureGenericApi(ApplicationApi, instance);
     configureGenericApi(AgentApi, instance);
+    configureGenericApi(GroupApi, instance);
 }
 
 function configureGenericApi(api, instance){
