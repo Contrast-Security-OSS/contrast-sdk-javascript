@@ -16,9 +16,9 @@ function updateGroup(orgUuid, groupId, group){
 }
 
 function addUserToGroup(orgUuid, groupId, user){
-	var group = {};
-	var users = [];
-	this.getGroup(orgUuid, groupId).then(function(response){
+	var group = getGroup(orgUuid, groupId).then(function(response){
+			var group = {};
+			var users = [];
             console.log(response);
             group.name=response["group"]["name"]
             group.users=users;
@@ -61,10 +61,11 @@ function addUserToGroup(orgUuid, groupId, user){
 			app_scope["exceptions"]=exceptions;
 			scope["app_scope"]=app_scope;
             group.scope = scope;
-			console.log(group)
+            return group;		
     });
-	return this.updateGroup(orgUuid, groupId, group);
-}
+    console.log("final group " + group);
+    return this.updateGroup(orgUuid, groupId, group); 
+} 
 
 module.exports.getGroup = getGroup;
 module.exports.createGroup = createGroup;
