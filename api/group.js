@@ -15,8 +15,8 @@ function updateGroup(orgUuid, groupId, group){
     //return this._put(path, {"name":"SergeiGroup1","users":["g.auravdhy@gmail.com","sergeibulatov334@gmail.com"]});
 }
 
-function addUserToGroup(orgUuid, groupId, user){
-	var group = getGroup(orgUuid, groupId).then(function(response){
+async function addUserToGroup(orgUuid, groupId, user){
+	var response = getGroup(orgUuid, groupId).then(function(response){
 			var group = {};
 			var users = [];
             console.log(response);
@@ -61,8 +61,9 @@ function addUserToGroup(orgUuid, groupId, user){
 			app_scope["exceptions"]=exceptions;
 			scope["app_scope"]=app_scope;
             group.scope = scope;
-            return group;		
+            //return group;		
     });
+    var group = response.group;
     console.log("final group " + group);
     return this.updateGroup(orgUuid, groupId, group); 
 } 
