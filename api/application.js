@@ -13,11 +13,6 @@ function getRecentApplications(orgUuid, expand, includeArchived, includeMerged, 
     return this._get(path, {'expand': expand, 'includeArchived': includeArchived, 'includeMerged': includeMerged, 'limit': limit});
 }
 
-function getApplicationAgentActivity(orgUuid, appId, range, includeMerged){
-    var path = `${orgUuid}/applications/${appId}/agent/activity/${range}`;
-    return this._get(path, {'includeMerged': includeMerged});
-}
-
 function getApplicationComponents(orgUuid, appId){
     var path = `${orgUuid}/applications/${appId}/components`;
     return this._get(path);
@@ -205,11 +200,6 @@ function getApplicationTraceServers(orgUuid, appId, traceId, expand){
     return this._get(path, {'expand': expand});
 }
 
-function getApplicationTraceUrls(orgUuid, appId, traceId, expand){
-    var path = `${orgUuid}/traces/${appId}/trace/${traceId}/urlinstances`;
-    return this._get(path, {'expand': expand});
-}
-
 function getApplicationTraceVisibility(orgUuid, appId, traceId){
     var path = `${orgUuid}/traces/${appId}/${traceId}/visible`;
     return this._get(path);
@@ -218,7 +208,6 @@ function getApplicationTraceVisibility(orgUuid, appId, traceId){
 module.exports.getInactiveApplications = getInactiveApplications;
 module.exports.getNewestApplications = getNewestApplications;
 module.exports.getRecentApplications = getRecentApplications;
-module.exports.getApplicationAgentActivity = getApplicationAgentActivity;
 module.exports.getApplicationComponents = getApplicationComponents;
 module.exports.getApplicationCoverage = getApplicationCoverage;
 module.exports.getApplicationCoveragePastWeek = getApplicationCoveragePastWeek;
@@ -258,5 +247,4 @@ module.exports.deleteApplicationTraces = deleteApplicationTraces;
 module.exports.getApplicationTraceDetails = getApplicationTraceDetails;
 module.exports.getApplicationTraceRequirements = getApplicationTraceRequirements;
 module.exports.getApplicationTraceServers = getApplicationTraceServers;
-module.exports.getApplicationTraceUrls = getApplicationTraceUrls;
 module.exports.getApplicationTraceVisibility = getApplicationTraceVisibility;

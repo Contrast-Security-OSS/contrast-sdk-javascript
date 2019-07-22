@@ -52,13 +52,6 @@ describe('Server API Test', function() {
         });
     });
 
-    it('should get server activity', function(done) {
-        configured.sdk.getServerActivity(configured.org, configured.server).then(function(response){
-            assert.equal(true, response.success);
-            done();
-        });
-    });
-
     it('should get server agent activity', function(done) {
         configured.sdk.getServerAgentActivity(configured.org, configured.server).then(function(response){
             assert.equal(true, response.success);

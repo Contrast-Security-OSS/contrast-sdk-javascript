@@ -9,8 +9,8 @@ describe('SDK Setup Test', function() {
       sdk = new ContrastSdk('contrast_admin','demo','demo')
       assert(sdk);
       assert(sdk.headers);
-      assert.equal('Y29udHJhc3RfYWRtaW46ZGVtbw==', sdk.headers.Authorization);
-      assert.equal('demo',sdk.headers['API-Key']);
+      assert.equal(testConfig.authorizationHeader, sdk.headers.Authorization);
+      assert.equal(testConfig.apiKey, sdk.headers['API-Key']);
     });
 
 });

@@ -101,13 +101,6 @@ describe('Tags API Test', function() {
         });
     });
 
-    it('should tag trace', function(done) {
-        configured.sdk.tagTrace(configured.org, configured.trace, 'test').then(function(response){
-            assert.equal(true, response.success);
-            done();
-        });
-    });
-
     it('should delete application tag', function(done) {
         configured.sdk.deleteTagFromApplication(configured.org, configured.app, 'test').then(function(response){
             assert.equal(true, response.success);
