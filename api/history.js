@@ -5,7 +5,7 @@ function getOrganizationScoreHistory(orgUuid, limit){
 
 function getOrganizationScoreHistoryInterval(orgUuid, interval, includeDefense){
     defense = includeDefense ? '/defense' : '';
-    var path = `${orgUuid}//history/scores/interval${defense}`;
+    var path = `${orgUuid}/history/scores/interval${defense}`;
     return this._get(path, params={'interval':interval});
 }
 

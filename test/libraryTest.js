@@ -24,20 +24,6 @@ describe('Library API Test', function() {
         });
     });
 
-    it('should get all library filters', function(done) {
-        configured.sdk.getAllLibraryFilters('APPLICATION').then(function(response){
-            assert.equal(true, response.success);
-            done();
-        });
-    });
-
-    it('should get library subfilters', function(done){
-        configured.sdk.getLibraryFilterSubfilters(configured.org, 'apps').then(function(response){
-            assert.equal(true, response.success);
-            done();
-        });
-    });
-
     it('should filter libraries', function(done) {
         configured.sdk.filterLibraries(configured.org).then(function(response){
             assert.equal(true, response.success);

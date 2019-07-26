@@ -2,3 +2,5 @@
 /test/config.json
 contrast.jar
 npm-debug.log
+
+.idea

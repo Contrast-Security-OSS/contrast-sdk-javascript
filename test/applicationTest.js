@@ -24,13 +24,6 @@ describe('Application API Test', function() {
         });
     });
 
-    it('should get application agent activity', function(done) {
-        configured.sdk.getApplicationAgentActivity(configured.org, configured.app).then(function(response){
-            assert.equal(true, response.success);
-            done();
-        });
-    });
-
     it('should get application components', function(done) {
         configured.sdk.getApplicationComponents(configured.org, configured.app).then(function(response){
             assert.equal(true, response.success);
@@ -271,13 +264,6 @@ describe('Application API Test', function() {
 
     it('should get application trace servers', function(done) {
         configured.sdk.getApplicationTraceServers(configured.org, configured.app, configured.trace).then(function(response){
-            assert.equal(true, response.success);
-            done();
-        });
-    });
-
-    it('should get application trace urls', function(done) {
-        configured.sdk.getApplicationTraceUrls(configured.org, configured.app, configured.trace).then(function(response){
             assert.equal(true, response.success);
             done();
         });

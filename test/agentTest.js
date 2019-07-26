@@ -19,14 +19,4 @@ describe('Agent API Test', function() {
         });
     });
 
-    it('should download agent', function(done) {
-        configured.sdk.downloadAgent(__dirname, configured.org,'java','default').then(function(response){
-            assert.equal(true, response.success);
-            fs.unlink(__dirname + 'contrast.jar')
-            done();
-        });
-
-
-    });
-
 });

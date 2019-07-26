@@ -33,11 +33,6 @@ function getServerDetails(orgUuid, serverId, expand){
     return this._get(path, params={'expand':expand});
 }
 
-function getServerActivity(orgUuid, serverId, startDate, endDate){
-    var path = `${orgUuid}/servers/${serverId}/activity`;
-    return this._get(path, params={'startDate':startDate, 'endDate':endDate});
-}
-
 function getServerAgentActivity(orgUuid, serverId, interval){
     var path = `${orgUuid}/servers/${serverId}/activity/interval`;
     return this._get(path, params={'interval':interval});
@@ -173,7 +168,6 @@ module.exports.getServerFilters = getServerFilters;
 module.exports.getServerFilterSubfilters = getServerFilterSubfilters;
 module.exports.getServerModes = getServerModes;
 module.exports.getServerDetails = getServerDetails;
-module.exports.getServerActivity = getServerActivity;
 module.exports.getServerAgentActivity = getServerAgentActivity;
 module.exports.getServerAppTraces = getServerAppTraces;
 module.exports.getServerAttackStatus = getServerAttackStatus;
