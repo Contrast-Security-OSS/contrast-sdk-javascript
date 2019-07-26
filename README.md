@@ -11,7 +11,7 @@ Any method of the SDK that interacts with our API returns a promise.
 > **Note:** The Contrast URL is optional and defaults to https://app.contrastsecurity.com/Contrast/api
 
 ```javascript
-    var ContrastSdk = require('contrast-security');    
+    var ContrastSdk = require('contrast-sdk');    
     var contrastSdk = new ContrastSdk('username','api_key','service_key','teamserver_url');
 ```
 
