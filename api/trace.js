@@ -43,11 +43,6 @@ function getTotalTraceTrend(orgUuid, interval, filter){
     return this._get(path, filter);
 }
 
-function getTraceTimeToRemediateByRule(orgUuid, filter){
-    var path = `${orgUuid}/orgtraces/stats/ttr/rule`;
-    return this._get(path, filter);
-}
-
 function getTraceTimeToRemediateBySeverity(orgUuid, filter){
     var path = `${orgUuid}/orgtraces/stats/ttr/severity`;
     return this._get(path, filter);
@@ -72,7 +67,6 @@ module.exports.getOrgTracePolicyViolations = getOrgTracePolicyViolations
 module.exports.getTraceVisibility = getTraceVisibility
 module.exports.getNewTraceTrend = getNewTraceTrend
 module.exports.getTotalTraceTrend = getTotalTraceTrend
-module.exports.getTraceTimeToRemediateByRule = getTraceTimeToRemediateByRule
 module.exports.getTraceTimeToRemediateBySeverity = getTraceTimeToRemediateBySeverity
 module.exports.getTraceTimeToRemediateCurrent = getTraceTimeToRemediateCurrent
 module.exports.getTraceTimeToRemediateMonthTrend = getTraceTimeToRemediateMonthTrend

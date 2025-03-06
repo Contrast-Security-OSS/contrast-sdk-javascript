@@ -66,13 +66,6 @@ describe('Trace API Test', function() {
         });
     });
 
-    it('should get trace time to remediate by rule', function(done) {
-        configured.sdk.getTraceTimeToRemediateByRule(configured.org).then(function(response){
-            assert.equal(true, response.success);
-            done();
-        });
-    });
-
     it('should get trace time to remediate by severity ', function(done) {
         configured.sdk.getTraceTimeToRemediateBySeverity(configured.org).then(function(response){
             assert.equal(true, response.success);
