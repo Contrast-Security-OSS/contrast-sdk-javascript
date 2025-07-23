@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^4.2.0"
+    "chai": "^5.2.1"
   },
   "dependencies": {
     "contrast-sdk": "0.0.1",
