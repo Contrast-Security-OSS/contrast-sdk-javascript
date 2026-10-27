@@ -14,7 +14,7 @@
     "chai": "^4.2.0"
   },
   "dependencies": {
-    "contrast-sdk": "0.0.1",
+    "contrast-sdk": "0.0.2",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   }
